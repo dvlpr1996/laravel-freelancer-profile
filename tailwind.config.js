@@ -7,7 +7,9 @@ module.exports = {
 		'./storage/framework/views/*.php',
 		'./resources/views/**/*.blade.php',
 	],
-
+	daisyui: {
+		themes: ["dark"],
+	},
 	theme: {
 		extend: {
 			fontFamily: {

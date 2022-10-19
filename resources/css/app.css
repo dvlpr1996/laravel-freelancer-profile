@@ -1,3 +1,38 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@layer base {
+	html {
+		scroll-behavior: smooth;
+	}
+
+	::-webkit-scrollbar {
+		width: 10px;
+	}
+
+	::-webkit-scrollbar-track {
+		@apply bg-slate-900;
+	}
+
+	::-webkit-scrollbar-thumb {
+		background: #1E293B;
+		border-radius: 5px;
+	}
+
+	h1 {
+		@apply text-3xl sm:text-4xl font-semibold capitalize italic;
+	}
+
+	h2 {
+		@apply text-2xl sm:text-3xl font-medium capitalize italic;
+	}
+
+	h3 {
+		@apply text-xl sm:text-2xl font-normal capitalize italic;
+	}
+
+	p {
+		@apply text-lg font-normal leading-8 capitalize;
+	}
+}
