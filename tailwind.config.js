@@ -17,7 +17,7 @@ module.exports = {
 	},
 
 	plugins: [
-		require("daisyui"),
+		require('daisyui'),
 		require('@tailwindcss/forms'),
 		require('tailwindcss-debug-screens'),
 	],
