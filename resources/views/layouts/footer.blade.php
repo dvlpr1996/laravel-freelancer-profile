@@ -2,16 +2,16 @@
 
 	<div class="space-x-4">
 			<a href="https://codepen.io/dvlpr1996" title="codepen">
-					<i class="ri-codepen-fill text-3xl"></i>
+				<i class="fa-brands fa-codepen text-3xl"></i>
 			</a>
 			<a href="https://instagram.com/nima_jahanbakhshian" title="instagram">
-					<i class="ri-instagram-fill text-3xl"></i>
+				<i class="fa-brands fa-instagram text-3xl"></i>
 			</a>
 			<a href="https://www.linkedin.com/in/nima-jahan-bakhshian" title="linkedin">
-					<i class="ri-linkedin-box-fill text-3xl"></i>
+				<i class="fa-brands fa-linkedin text-3xl"></i>
 			</a>
 			<a href="https://t.me/nima96_j" title="telegram">
-					<i class="ri-telegram-fill text-3xl"></i>
+				<i class="fa-brands fa-telegram text-3xl"></i>
 			</a>
 	</div>
 

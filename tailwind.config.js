@@ -11,6 +11,15 @@ module.exports = {
 		themes: ["dark"],
 	},
 	theme: {
+		screens: {
+			'2xs': '270px',
+			'xs': '360px',
+			'sm': '640px',
+			'md': '768px',
+			'lg': '1024px',
+			'xl': '1280px',
+			'2xl': '1536px',
+		},
 		extend: {
 			fontFamily: {
 				sans: ['Nunito', ...defaultTheme.fontFamily.sans],

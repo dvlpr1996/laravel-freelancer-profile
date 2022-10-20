@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" dir="ltr">
+<html lang="en" dir="ltr" class="@yield('html-bg', '')">
 
 <head>
 		<title>registration system @yield('title')</title>
@@ -16,8 +16,11 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1.0">
 		{{-- <link rel="icon" type="image/png" sizes="16x16" href="{{  }}">
 		<link rel="apple-touch-icon" sizes="180x180" href="{{  }}"> --}}
+		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css">
 		@vite('resources/css/app.css')
 		<!-- [if lt IE 9]>
 			<script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
 			<![endif] -->
 </head>
+
+<body class="debug-screens mx-auto max-w-7xl px-4">
