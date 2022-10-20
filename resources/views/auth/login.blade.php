@@ -1,6 +1,6 @@
 @extends('layouts.authMaster')
 @section('html-bg', 'bg-base-200')
-@section('title', 'Profile')
+@section('title', 'login')
 
 @section('content')
 		{{-- <x-auth-session-status class="mb-4" :status="session('status')"> --}}

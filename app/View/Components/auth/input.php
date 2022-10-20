@@ -10,7 +10,7 @@ class input extends Component
 	public $type;
 	public $old;
 
-	public function __construct($name, $type, $old)
+	public function __construct($name, $type, $old='')
 	{
 		$this->name = $name;
 		$this->type = $type;

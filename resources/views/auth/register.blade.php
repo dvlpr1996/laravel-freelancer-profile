@@ -1,64 +1,56 @@
-<x-guest-layout>
-    <x-auth-card>
-        <x-slot name="logo">
-            <a href="/">
-                <x-application-logo class="w-20 h-20 fill-current text-gray-500" />
-            </a>
-        </x-slot>
+@extends('layouts.authMaster')
+@section('html-bg', 'bg-base-200')
+@section('py', 'py-4 sm:py-0')
+@section('title', 'register')
 
-        <form method="POST" action="{{ route('register') }}">
-            @csrf
+@section('content')
 
-            <!-- Name -->
-            <div>
-                <x-input-label for="name" :value="__('Name')" />
+		<div class="mx-auto flex min-h-screen max-w-5xl items-center justify-center">
+				<div class="card w-[500px] bg-base-100 shadow-2xl">
+					<form action="" method="post">
+						@csrf
+						<div class="card-body sm:space-y-2">
 
-                <x-text-input id="name" class="block mt-1 w-full" type="text" name="name" :value="old('name')" required autofocus />
+										<div class="flex flex-col items-center justify-between gap-3 sm:flex-row">
+												<div class="form-control w-full">
+														<x-auth.label>first name</x-auth.label>
+														<x-auth.input type="text" name="fname" :old="old('fname')" />
+												</div>
 
-                <x-input-error :messages="$errors->get('name')" class="mt-2" />
-            </div>
+												<div class="form-control w-full">
+														<x-auth.label>last name</x-auth.label>
+														<x-auth.input type="text" name="lname" :old="old('lname')" />
+												</div>
+										</div>
 
-            <!-- Email Address -->
-            <div class="mt-4">
-                <x-input-label for="email" :value="__('Email')" />
+										<div class="form-control w-full">
+												<x-auth.label>email</x-auth.label>
+												<x-auth.input type="email" name="email" :old="old('email')" />
+										</div>
 
-                <x-text-input id="email" class="block mt-1 w-full" type="email" name="email" :value="old('email')" required />
+										<div class="form-control">
+												<x-auth.label>Password</x-auth.label>
+												<x-auth.input type="password" name="password" />
+										</div>
 
-                <x-input-error :messages="$errors->get('email')" class="mt-2" />
-            </div>
+										<div class="form-control">
+												<x-auth.label>password confirmation</x-auth.label>
+												<x-auth.input type="password" name="password_confirmation" />
+										</div>
 
-            <!-- Password -->
-            <div class="mt-4">
-                <x-input-label for="password" :value="__('Password')" />
+										<div class="form-control">
+												<button class="btn-primary btn">
+														<i class="fa-solid fa-user-plus mr-2"></i>register
+												</button>
+										</div>
 
-                <x-text-input id="password" class="block mt-1 w-full"
-                                type="password"
-                                name="password"
-                                required autocomplete="new-password" />
-
-                <x-input-error :messages="$errors->get('password')" class="mt-2" />
-            </div>
-
-            <!-- Confirm Password -->
-            <div class="mt-4">
-                <x-input-label for="password_confirmation" :value="__('Confirm Password')" />
-
-                <x-text-input id="password_confirmation" class="block mt-1 w-full"
-                                type="password"
-                                name="password_confirmation" required />
-
-                <x-input-error :messages="$errors->get('password_confirmation')" class="mt-2" />
-            </div>
-
-            <div class="flex items-center justify-end mt-4">
-                <a class="underline text-sm text-gray-600 hover:text-gray-900" href="{{ route('login') }}">
-                    {{ __('Already registered?') }}
-                </a>
-
-                <x-primary-button class="ml-4">
-                    {{ __('Register') }}
-                </x-primary-button>
-            </div>
-        </form>
-    </x-auth-card>
-</x-guest-layout>
+										<div class="mt-3">
+												<a href="#" class="link-hover label-text-alt link">
+														Already have an account
+												</a>
+										</div>
+									</div>
+								</form>
+				</div>
+		</div>
+@endsection

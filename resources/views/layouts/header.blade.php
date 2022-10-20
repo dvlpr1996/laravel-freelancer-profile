@@ -23,4 +23,4 @@
 			<![endif] -->
 </head>
 
-<body class="debug-screens mx-auto max-w-7xl px-4">
+<body class="debug-screens mx-auto max-w-7xl px-4 @yield('py')">
