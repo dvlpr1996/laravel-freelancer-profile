@@ -1,5 +1,4 @@
 @extends('layouts.authMaster')
-@section('html-bg', 'bg-base-200')
 @section('title', 'login')
 
 @section('content')

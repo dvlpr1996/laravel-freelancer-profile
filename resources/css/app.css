@@ -36,3 +36,14 @@ html {
 		@apply text-lg font-normal leading-8 capitalize;
 	}
 }
+
+@layer components {
+	.info-list-items {
+		@apply flex items-center gap-1 border-b-4
+		 border-dotted border-slate-800 pb-2 text-left;
+	}
+
+	.info-list-title {
+		@apply capitalize inline-block min-w-[100px] text-lg sm:min-w-[100px];
+	}
+}

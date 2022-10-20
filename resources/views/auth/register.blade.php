@@ -1,6 +1,5 @@
 @extends('layouts.authMaster')
-@section('html-bg', 'bg-base-200')
-@section('py', 'py-4 sm:py-0')
+@section('body-class', 'py-4 sm:py-0')
 @section('title', 'register')
 
 @section('content')
