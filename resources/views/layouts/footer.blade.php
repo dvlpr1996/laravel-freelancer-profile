@@ -20,7 +20,6 @@
 		Laravel Freelancer Profile. All rights reserved
 	</p>
 </footer>
-@vite('resources/js/app.js')
 </body>
 
 </html>

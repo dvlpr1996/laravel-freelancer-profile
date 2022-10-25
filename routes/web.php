@@ -4,8 +4,8 @@ use Illuminate\Support\Facades\Route;
 
 Route::view('/','home')->name('home.index');
 
-Route::view('/profile','profile')->name('profile.index');
-Route::view('/portfolios','portfolios')->name('portfolios.index');
+Route::view('/panel-profile','panel.profile')->name('profile.index');
+Route::view('/panel-message','panel.notif')->name('profile.index');
 
 Route::get('/test', function () {
 
