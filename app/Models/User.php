@@ -7,8 +7,10 @@ use App\Models\Skill;
 use App\Models\Social;
 use App\Models\Contact;
 use App\Models\WorkSample;
+use Illuminate\Support\Str;
 use Laravel\Sanctum\HasApiTokens;
 use Illuminate\Notifications\Notifiable;
+use Illuminate\Database\Eloquent\Casts\Attribute;
 // use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
@@ -18,7 +20,9 @@ class User extends Authenticatable
 	use HasApiTokens, HasFactory, Notifiable;
 
 	protected $fillable = [
-		'name',
+		'fname',
+		'lname',
+		'slug',
 		'email',
 		'password',
 	];
@@ -60,5 +64,16 @@ class User extends Authenticatable
 	public function skill()
 	{
 		return $this->morphOne(Skill::class, 'skillable');
+	}
+
+	public function fullName()
+	{
+		return $this->fname . ' ' . $this->lname;
+	}
+
+	public function gravatar()
+	{
+		$hash = md5(strtolower($this->attributes['email']));
+		return "http://s.gravatar.com/avatar/$hash";
 	}
 }

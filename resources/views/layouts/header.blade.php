@@ -2,7 +2,7 @@
 <html lang="en" dir="ltr" class="@yield('html-bg', '')">
 
 <head>
-		<title>registration system - @yield('title')</title>
+		<title>Freelancer - @yield('title')</title>
 		<meta charset="UTF-8">
 		<meta name="language" content="en">
 		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
