@@ -10,13 +10,15 @@ class input extends Component
 	public $type;
 	public $old;
 	public $place;
+	public $value;
 
-	public function __construct($name, $type, $old='' , $place='')
+	public function __construct($name, $type, $old = '', $place = '', $value = '')
 	{
 		$this->name = $name;
 		$this->type = $type;
 		$this->old = $old;
 		$this->place = $place;
+		$this->value = $value;
 	}
 
 	public function render()

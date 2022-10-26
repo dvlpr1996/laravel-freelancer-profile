@@ -1,7 +1,7 @@
 {{-- @auth --}}
 <nav class="navbar justify-between rounded-lg bg-primary p-3 font-medium text-primary-content">
 		<div class="space-x-3">
-				@yield('menu','')
+				@yield('menu', '')
 				<x-logo />
 				<a href="{{ route('home.index') }}" class="hover:text-white">home</a>
 		</div>
@@ -9,7 +9,7 @@
 		<div x-data="dropdown" x-on:click.away="away()" class="relative">
 				<button x-on:click="toggle()" class="hover:text-white">
 						<i class="fa-solid fa-caret-down mr-2 align-middle"></i>
-						john doe
+						{{ $user->fullName() }}
 				</button>
 				<div x-show="open" x-transition.duration.500ms
 						class="border-1 absolute top-8 right-0 z-20 hidden min-w-[170px] space-y-3 rounded-lg border-slate-600 bg-base-100 p-2"
@@ -20,9 +20,9 @@
 								profile
 						</a>
 
-						<a href="#" class="m-2 block text-left text-primary-content">
+						<a href="{{ route('panel.index', $user->slug) }}" class="m-2 block text-left text-primary-content">
 								<i class="fa-solid fa-gear mr-1 align-middle"></i>
-								settings
+								panel
 						</a>
 
 						<a href="#" class="m-2 block text-left text-primary-content">

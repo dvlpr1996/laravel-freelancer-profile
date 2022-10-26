@@ -17,7 +17,7 @@ return new class extends Migration
 			$table->string('tel',11)->unique()->nullable();
 			$table->string('address', 512)->nullable();
 			$table->text('bio', 1024)->nullable();
-			$table->date('date_of_birth')->default(date("Y-m-d"))->nullable();
+			$table->date('date_of_birth')->nullable();
 			$table->timestamp('email_verified_at')->nullable();
 			$table->string('password');
 			$table->rememberToken();

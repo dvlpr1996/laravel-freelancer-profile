@@ -1,5 +1,6 @@
 @section('title', 'Home')
 @include('layouts.header')
+<body class="debug-screens max-w-7xl px-4 mx-auto">
 
 		<nav class="navbar justify-between rounded-lg bg-primary text-primary-content">
 				<div class="flex items-center gap-2">

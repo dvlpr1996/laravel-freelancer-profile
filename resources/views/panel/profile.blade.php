@@ -7,95 +7,64 @@
 				class="mt-20 flex w-[initial] flex-col items-center gap-2 rounded-lg bg-base-300 p-4 sm:flex-row sm:items-start md:gap-8 lg:w-max">
 
 				<div class="text-center">
-						<img src="https://dummyimage.com/600x400/000/fff" alt="" class="mx-auto block h-44 w-44 rounded-full"
+						<img src="{{ $user->gravatar() }}" alt="{{ $user->defaultImg() }}" class="mx-auto block h-44 w-44 rounded-full"
 								id="profile">
 						<div>
+								<x-auth.label>change profile pic</x-auth.label>
 								<input type="file" class="hidden" accept="image/*" id="input-profile" name="userAvatar" form="profile-form"
 										value="">
-								<label for="input-profile" class="cursor-pointer">change profile pic</label>
 						</div>
 				</div>
 
 				<div class="w-full sm:w-9/12">
 						<form class="space-y-5" action="#" method="POST" enctype="multipart/form-data" id="profile-form">
-
 								@method('put')
 								@csrf
 								<div class="flex flex-col items-center gap-2 sm:flex-row">
 										<div class="form-control w-full">
-												<label class="label">first name</label>
-												<span class="text-sm text-rose-600">
-														<i class="ri-asterisk"></i>
-												</span>
-												<input type="text" class="input-bordered input w-full" placeholder="first name" name="fname"
-														maxlength="16" value="{{ $user->fname }}" onclick="this.value=''">
+												<x-auth.label>first name</x-auth.label>
+												<x-auth.input type="text" name="fname" place="firstName" :value="$user->fname ?? 'not defined'" />
 										</div>
 
 										<div class="form-control w-full">
-												<label class="label">last name</label>
-												<span class="text-sm text-rose-600">
-														<i class="ri-asterisk"></i>
-												</span>
-												<input type="text" placeholder="last name" class="input-bordered input w-full" name="lname"
-														maxlength="32" value="{{ $user->lname }}" onclick="this.value=''">
+												<x-auth.label>last name</x-auth.label>
+												<x-auth.input type="text" name="lname" place="last name" :value="$user->lname ?? 'not defined'" />
 										</div>
 								</div>
 
 								<div class="flex flex-col items-center justify-between gap-2 sm:flex-row">
 										<div class="form-control w-full">
-												<label class="label">
-														phone
-												</label>
-												<span class="text-sm text-rose-600">
-														<i class="ri-asterisk"></i>
-												</span>
-												<input type="tel" placeholder="phone number" class="input-bordered input w-full" name="phone"
-														maxlength="11" value="{{ $user->tel }}" onclick="this.value=''">
+												<x-auth.label>phone</x-auth.label>
+												<x-auth.input type="tel" name="tel" place="phone number" :value="$user->tel ?? 'not defined'" />
 										</div>
 
 										<div class="form-control w-full">
-												<label class="label">
-														age
-												</label>
-												<input type="date" class="input-bordered input w-full" name="age"
-												 value="{{ $user->age }}"
-														onclick="this.value=''">
+												<x-auth.label>age</x-auth.label>
+												<x-auth.input type="date" name="date_of_birth" place="date of birth" :value="date('Y-m-d', strtotime($user->dateOfBirth))" />
 										</div>
 								</div>
 
 								<div class="flex flex-col items-center gap-2 sm:flex-row">
 										<div class="form-control w-full">
-												<label class="label">
-														email
-												</label>
-												<span class="text-sm text-rose-600">
-														<i class="ri-asterisk"></i>
-												</span>
-												<input type="email" placeholder="email address" class="input-bordered input w-full" name="email"
-														value="{{ $user->email }}" onclick="this.value=''">
+												<x-auth.label>email</x-auth.label>
+												<x-auth.input type="email" name="email" place="email" :value="$user->email ?? 'not defined'" />
 										</div>
 
 										<div class="form-control w-full">
-												<label class="label">
-														skills
-												</label>
-												<input type="text" placeholder="seperated by comma" class="input-bordered input w-full" name="skill"
-														minlength="2" maxlength="128" value="{{ $user->skill ?? '' }}" onclick="this.value=''">
+												<x-auth.label>skills</x-auth.label>
+												<x-auth.input type="text" name="skill" place="seperated by comma" :value="$user->skill ?? 'not defined'" />
 										</div>
 								</div>
 
 								<div class="form-control w-full">
-										<label class="label">
-												address
-										</label>
-										<input type="text" placeholder="city, street" class="input-bordered input w-full" name="address"
-												minlength="3" maxlength="512" value="{{ $user->address }}" onclick="this.value=''">
+										<x-auth.label>address</x-auth.label>
+										<x-auth.input type="text" name="address" place="city, street" :value="$user->address ?? 'not defined'" />
 								</div>
 
 								<div class="form-control w-full">
-										<label class="label">bio</label>
+										<x-auth.label>bio</x-auth.label>
 										<textarea name="msg" class="textarea w-full" minlength="3" maxlength="1024" onclick="this.value=''">
-											{{ $user->bio }}
+											{{ $user->bio ?? 'not defined' }}
 										</textarea>
 								</div>
 

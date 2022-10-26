@@ -14,7 +14,7 @@
 						</div>
 
 						<div class="card w-full max-w-sm flex-shrink-0 bg-base-100 shadow-2xl">
-								<form action="" method="post">
+								<form action="{{ route('login.store') }}" method="POST">
 										@csrf
 										<div class="card-body">
 												<div class="form-control">
@@ -42,7 +42,7 @@
 														<a href="#" class="link-hover label-text-alt link">
 																Forgot password?
 														</a>
-														<a href="#" class="link-hover label-text-alt link">
+														<a href="{{ route('register.create') }}" class="link-hover label-text-alt link">
 																Already have an account
 														</a>
 												</div>

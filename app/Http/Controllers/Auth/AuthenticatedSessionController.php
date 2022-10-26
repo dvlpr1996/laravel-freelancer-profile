@@ -16,15 +16,9 @@ class AuthenticatedSessionController extends Controller
 
 		$request->session()->regenerate();
 
-		return redirect()->intended(RouteServiceProvider::HOME);
+		return redirect()->intended(RouteServiceProvider::HOME . auth()->user()->slug);
 	}
 
-	/**
-	 * Destroy an authenticated session.
-	 *
-	 * @param  \Illuminate\Http\Request  $request
-	 * @return \Illuminate\Http\RedirectResponse
-	 */
 	public function destroy(Request $request)
 	{
 		Auth::guard('web')->logout();
@@ -33,6 +27,6 @@ class AuthenticatedSessionController extends Controller
 
 		$request->session()->regenerateToken();
 
-		return redirect('/');
+		return redirect()->route('home.index');
 	}
 }

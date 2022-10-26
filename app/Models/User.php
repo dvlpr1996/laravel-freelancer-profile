@@ -3,6 +3,7 @@
 namespace App\Models;
 
 use App\Models\Cv;
+use Carbon\Carbon;
 use App\Models\Skill;
 use App\Models\Social;
 use App\Models\Contact;
@@ -10,8 +11,8 @@ use App\Models\WorkSample;
 use Illuminate\Support\Str;
 use Laravel\Sanctum\HasApiTokens;
 use Illuminate\Notifications\Notifiable;
-use Illuminate\Database\Eloquent\Casts\Attribute;
 // use Illuminate\Contracts\Auth\MustVerifyEmail;
+use Illuminate\Database\Eloquent\Casts\Attribute;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 
@@ -75,5 +76,17 @@ class User extends Authenticatable
 	{
 		$hash = md5(strtolower($this->attributes['email']));
 		return "http://s.gravatar.com/avatar/$hash";
+	}
+
+	public function defaultImg()
+	{
+		return null;
+	}
+
+	protected function dateOfBirth(): Attribute
+	{
+		return Attribute::make(
+			get: fn ($value) => ($value != null) ? Carbon::create($value)->toFormattedDateString() : 'not defined'
+		);
 	}
 }
