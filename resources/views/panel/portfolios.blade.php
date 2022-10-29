@@ -95,7 +95,7 @@
 										<p>no portfolio found</p>
 								</div>
 						@endif
-						{{-- {{ $portfolios->links('components.pagination') }} --}}
+						{{ $portfolios->links('components.pagination') }}
 				</div>
 		</section>
 
@@ -136,6 +136,7 @@
 								<p>no portfolio found</p>
 						</div>
 				@endforelse
+				{{ $portfolios->links('components.pagination') }}
 		</section>
 
 @endsection
