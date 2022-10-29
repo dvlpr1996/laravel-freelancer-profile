@@ -2,6 +2,7 @@
 
 use App\Models\WorkSample;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\UserController;
 use App\Http\Controllers\PanelController;
 use App\Http\Controllers\PortfolioController;
 
@@ -18,6 +19,12 @@ Route::middleware(['auth'])->group(function () {
 		Route::Get('/panel-portfolios/{user:slug}', 'index')
 			->where('user', '[A-Za-z-]+')
 			->name('panel.portfolios.index');
+	});
+
+	Route::controller(UserController::class)->group(function () {
+		Route::Get('/delete/{user:slug}', 'destroy')
+			->where('user', '[A-Za-z-]+')
+			->name('delete.destroy');
 	});
 });
 

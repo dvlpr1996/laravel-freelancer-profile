@@ -85,7 +85,7 @@
 								<hr>
 								<p class="text-center sm:text-left">Once you delete your account, there
 										is no going back. Please be certain.</p>
-								<a href="" onclick="return confirm('are you sure?');"
+								<a href="{{ route('delete.destroy', $user->slug) }}" onclick="return confirm('are you sure?');"
 										class="btn h-3 w-full bg-error-content py-2 text-base hover:bg-error-content sm:w-max">
 										Delete your account
 								</a>
