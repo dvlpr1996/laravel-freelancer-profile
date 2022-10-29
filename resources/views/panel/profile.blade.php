@@ -64,7 +64,7 @@
 								<div class="form-control w-full">
 										<x-auth.label>bio</x-auth.label>
 										<textarea name="msg" class="textarea w-full" minlength="3" maxlength="1024" onclick="this.value=''">
-											{{ $user->bio ?? 'not defined' }}
+											{{ trim($user->bio) ?? 'not defined' }}
 										</textarea>
 								</div>
 

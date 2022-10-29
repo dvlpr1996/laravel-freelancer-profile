@@ -62,9 +62,9 @@ class User extends Authenticatable
 		return $this->hasOne(Cv::class);
 	}
 
-	public function skill()
+	public function skills()
 	{
-		return $this->morphOne(Skill::class, 'skillable');
+		return $this->morphMany(Skill::class, 'skillable');
 	}
 
 	public function fullName()
@@ -89,4 +89,5 @@ class User extends Authenticatable
 			get: fn ($value) => ($value != null) ? Carbon::create($value)->toFormattedDateString() : 'not defined'
 		);
 	}
+
 }

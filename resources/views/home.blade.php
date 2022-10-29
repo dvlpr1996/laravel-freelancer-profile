@@ -1,6 +1,7 @@
 @section('title', 'Home')
 @include('layouts.header')
-<body class="debug-screens max-w-7xl px-4 mx-auto">
+
+<body class="debug-screens mx-auto max-w-7xl px-4">
 
 		<nav class="navbar justify-between rounded-lg bg-primary text-primary-content">
 				<div class="flex items-center gap-2">
@@ -22,7 +23,7 @@
 						@endguest
 
 						@auth
-								<a href="{{ route('panel.index', auth()->user()->slug) }}" class="btn-ghost btn">
+								<a href="{{ route('panel.profile.index', auth()->user()->slug) }}" class="btn-ghost btn">
 										<i class="fa-solid fa-user mr-2 align-baseline"></i>profile
 								</a>
 
@@ -38,7 +39,7 @@
 				<section class="space-y-5 text-center">
 						<h1>Laravel Freelancer Profile</h1>
 						<a href="https://github.com/dvlpr1996/dvlpr1996" title="dvlpr1996 github account"
-								class="btn mx-auto py-2 px-9 w-3/6 sm:w-1/6">
+								class="btn mx-auto w-3/6 py-2 px-9 sm:w-1/6">
 								<i class="fa-brands fa-github text-2xl"></i>
 						</a>
 				</section>
@@ -47,7 +48,8 @@
 						<h2>description</h2>
 						<p>
 								this laravel project is a Laravel Freelancer Profile. in this project i Use
-								Laravel Breeze Package For Implementing Authentication Features and for front-end section i use alpine.js ,tailwindCss and daisyui
+								Laravel Breeze Package For Implementing Authentication Features and for front-end section i use alpine.js
+								,tailwindCss and daisyui
 						</p>
 				</section>
 

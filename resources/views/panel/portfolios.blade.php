@@ -44,7 +44,8 @@
 								<label for="my-modal-4" class="modal cursor-pointer">
 										<label class="modal-box relative" for="">
 												<h3 class="text-lg font-bold">Congratulations random Internet user!</h3>
-												<p class="py-4">You've been selected for a chance to get one year of subscription to use Wikipedia for free!
+												<p class="py-4">
+														You've been selected for a chance to get one year of subscription to use Wikipedia for free!
 												</p>
 										</label>
 								</label>
@@ -52,85 +53,89 @@
 				</div>
 
 				<div class="overflow-x-auto rounded-lg bg-base-300 p-4 shadow-lg">
-						<table class="table-zebra table w-full">
-								<thead>
-										<tr class="hover">
-												<th class="text-base font-bold">#</th>
-												<th class="text-base font-bold">title</th>
-												<th class="text-base font-bold">skills</th>
-												<th class="text-base font-bold">likes</th>
-												<th class="text-base font-bold">actions</th>
-										</tr>
-								</thead>
-								<tbody>
-										<tr class="hover">
-												<td>1</td>
-												<td>Cy Ganderton</td>
-												<td>Quality Control Specialist</td>
-												<td>Quality Control Specialist</td>
-												<td class="flex gap-3">
-														<a href="#" onclick="return confirm('Are you sure?')">
-																<i class="fas fa-trash"></i>
-														</a>
-														<a href="#">
-																<i class="fas fa-edit" x-on:click="toggle()">
-																</i>
-														</a>
-												</td>
-										</tr>
-										<tr>
-												<th>2</th>
-												<td>Hart Hagerty</td>
-												<td>Desktop Support Technician</td>
-												<td>Desktop Support Technician</td>
-												<td>Purple</td>
-										</tr>
-										<tr>
-												<th>3</th>
-												<td>Brice Swyre</td>
-												<td>Tax Accountant</td>
-												<td>Tax Accountant</td>
-												<td>Red</td>
-										</tr>
-								</tbody>
-						</table>
+						@if (count($portfolios) > 0)
+								<table class="table-zebra table w-full">
+										<thead>
+												<tr class="hover">
+														<th class="text-base font-bold">#</th>
+														<th class="text-base font-bold">title</th>
+														<th class="text-base font-bold">skills</th>
+														<th class="text-base font-bold">likes</th>
+														<th class="text-base font-bold">actions</th>
+												</tr>
+										</thead>
+										<tbody>
+												@foreach ($portfolios as $index => $portfolio)
+														<tr class="hover">
+																<td>{{ ++$index }}</td>
+																<td>{{ $portfolio->title }}</td>
+																<td>
+																		@foreach ($portfolio->skills as $skill)
+																				<span class="badge-primary badge">{{ $skill->name }}</span>
+																		@endforeach
+																</td>
+																<td>
+																		{{ $portfolio->like->like ?? 0 }}
+																</td>
+																<td class="flex gap-3">
+																		<a href="#" onclick="return confirm('Are you sure?')">
+																				<i class="fas fa-trash"></i>
+																		</a>
+																		<a href="#">
+																				<i class="fas fa-edit" x-on:click="toggle()">
+																				</i>
+																		</a>
+																</td>
+														</tr>
+												@endforeach
+										</tbody>
+								</table>
+						@else
+								<div class="text-center">
+										<p>no portfolio found</p>
+								</div>
+						@endif
+						{{-- {{ $portfolios->links('components.pagination') }} --}}
 				</div>
 		</section>
 
 		<section class="space-y-5">
 				<h2>portfolios</h2>
 
-				<div class="w-full bg-base-300 shadow-xl p-4 rounded-lg">
-						<div class="flex flex-col sm:flex-row gap-5 items-center justify-center">
-								<figure>
-										<img src="https://dummyimage.com/250x250/000/fff" alt="" class="rounded-lg">
-								</figure>
-								<div class="space-y-3">
-										<h2>title</h2>
+				@forelse($portfolios as $portfolio)
+						<div class="w-full rounded-lg bg-base-300 p-4 shadow-xl">
+								<div class="flex flex-col items-center justify-center gap-5 sm:flex-row">
+										<figure>
+												<img src="{{ $portfolio->pic() }}" alt="{{ $portfolio->title }}" class="rounded-lg">
+										</figure>
+										<div class="space-y-3">
+												<h2>{{ $portfolio->title }}</h2>
 
-										<p>
-												Lorem ipsum dolor sit amet consectetur, adipisicing elit. Esse ipsum repellendus incidunt obcaecati
-												dignissimos suscipit?
-										</p>
+												<p>{{ $portfolio->des }}</p>
 
-										<div>
-												<span class="badge-primary badge">primary</span>
-												<span class="badge-primary badge">primary</span>
-												<span class="badge-primary badge">primary</span>
-										</div>
+												<div>
+														@foreach ($portfolio->skills as $skill)
+																<span class="badge-primary badge">{{ $skill->name }}</span>
+														@endforeach
+												</div>
 
-										<div class="card-actions justify-end">
-												<a href="#" class="btn-primary btn h-2" onclick="return confirm('Are you sure?')">
-														<i class="fas fa-trash"></i>
-												</a>
-												<a href="#"class="btn-primary btn h-2">
-														<i class="fas fa-edit" x-on:click="toggle()">
-														</i>
-												</a>
+												<div class="card-actions justify-end">
+														<a href="#" class="btn-primary btn h-2" onclick="return confirm('Are you sure?')">
+																<i class="fas fa-trash"></i>
+														</a>
+														<a href="#"class="btn-primary btn h-2">
+																<i class="fas fa-edit" x-on:click="toggle()">
+																</i>
+														</a>
+												</div>
 										</div>
 								</div>
 						</div>
-				</div>
+				@empty
+						<div class="text-center">
+								<p>no portfolio found</p>
+						</div>
+				@endforelse
 		</section>
 
 @endsection

@@ -20,7 +20,7 @@
 								profile
 						</a>
 
-						<a href="{{ route('panel.index', $user->slug) }}" class="m-2 block text-left text-primary-content">
+						<a href="{{ route('panel.profile.index', $user->slug) }}" class="m-2 block text-left text-primary-content">
 								<i class="fa-solid fa-gear mr-1 align-middle"></i>
 								panel
 						</a>
