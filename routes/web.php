@@ -22,9 +22,13 @@ Route::middleware(['auth'])->group(function () {
 	});
 
 	Route::controller(UserController::class)->group(function () {
-		Route::Get('/delete/{user:slug}', 'destroy')
+		Route::Get('user/{user:slug}/delete', 'destroy')
 			->where('user', '[A-Za-z-]+')
 			->name('delete.destroy');
+
+		Route::put('user/update/{user:slug}', 'update')
+			->where('user', '[A-Za-z-]+')
+			->name('user.update');
 	});
 });
 

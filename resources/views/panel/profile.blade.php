@@ -3,79 +3,72 @@
 
 @section('content')
 		<h1 class="text-center sm:text-left">your profile info</h1>
-		<section
-				class="mt-20 flex w-[initial] flex-col items-center gap-2 rounded-lg bg-base-300 p-4 sm:flex-row sm:items-start md:gap-8 lg:w-max">
+		<section class="mt-20 rounded-lg bg-base-300 p-4">
+				<form class="space-y-5" action="{{ route('user.update', $user->slug) }}" method="POST">
+						@method('put')
+						@csrf
+						<div class="flex flex-col items-center gap-2 sm:flex-row">
+								<div class="form-control w-full">
+										<x-auth.label>first name</x-auth.label>
+										<x-auth.input type="text" name="fname" place="firstName" :value="$user->fname ?? 'not defined'" />
+								</div>
 
-				<div class="text-center">
-						<img src="{{ $user->gravatar() }}" alt="{{ $user->defaultImg() }}" class="mx-auto block h-44 w-44 rounded-full"
-								id="profile">
-						<div>
-								<x-auth.label>change profile pic</x-auth.label>
-								<input type="file" class="hidden" accept="image/*" id="input-profile" name="userAvatar" form="profile-form"
-										value="">
+								<div class="form-control w-full">
+										<x-auth.label>last name</x-auth.label>
+										<x-auth.input type="text" name="lname" place="last name" :value="$user->lname ?? 'not defined'" />
+								</div>
 						</div>
-				</div>
 
-				<div class="w-full sm:w-9/12">
-						<form class="space-y-5" action="#" method="POST" enctype="multipart/form-data" id="profile-form">
-								@method('put')
-								@csrf
-								<div class="flex flex-col items-center gap-2 sm:flex-row">
-										<div class="form-control w-full">
-												<x-auth.label>first name</x-auth.label>
-												<x-auth.input type="text" name="fname" place="firstName" :value="$user->fname ?? 'not defined'" />
-										</div>
-
-										<div class="form-control w-full">
-												<x-auth.label>last name</x-auth.label>
-												<x-auth.input type="text" name="lname" place="last name" :value="$user->lname ?? 'not defined'" />
-										</div>
+						<div class="flex flex-col items-center justify-between gap-2 sm:flex-row">
+								<div class="form-control w-full">
+										<x-auth.label>phone</x-auth.label>
+										<x-auth.input type="tel" name="tel" place="phone number" :value="$user->tel ?? 'not defined'" />
 								</div>
 
-								<div class="flex flex-col items-center justify-between gap-2 sm:flex-row">
-										<div class="form-control w-full">
-												<x-auth.label>phone</x-auth.label>
-												<x-auth.input type="tel" name="tel" place="phone number" :value="$user->tel ?? 'not defined'" />
-										</div>
+								<div class="form-control w-full">
+										<x-auth.label>age</x-auth.label>
+										<x-auth.input type="date" name="date_of_birth" place="date of birth"
+										 :value="$user->date_of_birth" />
+								</div>
+						</div>
 
-										<div class="form-control w-full">
-												<x-auth.label>age</x-auth.label>
-												<x-auth.input type="date" name="date_of_birth" place="date of birth" :value="date('Y-m-d', strtotime($user->dateOfBirth))" />
-										</div>
+						<div class="flex flex-col items-center gap-2 sm:flex-row">
+								<div class="form-control w-full">
+										<x-auth.label>email</x-auth.label>
+										<x-auth.input type="email" name="email" place="email" :value="$user->email ?? 'not defined'" />
 								</div>
 
-								<div class="flex flex-col items-center gap-2 sm:flex-row">
-										<div class="form-control w-full">
-												<x-auth.label>email</x-auth.label>
-												<x-auth.input type="email" name="email" place="email" :value="$user->email ?? 'not defined'" />
-										</div>
-
-										<div class="form-control w-full">
-												<x-auth.label>skills</x-auth.label>
-												<x-auth.input type="text" name="skill" place="seperated by comma" :value="$user->skill ?? 'not defined'" />
-										</div>
+								<div class="form-control w-full">
+										<x-auth.label>skills</x-auth.label>
+										<x-auth.input type="text" name="skill" place="seperated by comma" :value="$user->userSkillName($user->skills)" />
 								</div>
+						</div>
 
+						<div class="flex flex-col items-center gap-2 sm:flex-row">
+								<div class="form-control w-full">
+										<x-auth.label>user name</x-auth.label>
+										<x-auth.input type="text" name="slug" place="user name" :value="$user->slug ?? 'not defined'" />
+								</div>
 								<div class="form-control w-full">
 										<x-auth.label>address</x-auth.label>
 										<x-auth.input type="text" name="address" place="city, street" :value="$user->address ?? 'not defined'" />
 								</div>
+						</div>
 
-								<div class="form-control w-full">
-										<x-auth.label>bio</x-auth.label>
-										<textarea name="msg" class="textarea w-full" minlength="3" maxlength="1024" onclick="this.value=''">
+						<div class="form-control w-full">
+								<x-auth.label>bio</x-auth.label>
+								<textarea name="bio" class="textarea w-full" minlength="3" maxlength="1024" onclick="this.value=''">
 											{{ trim($user->bio) ?? 'not defined' }}
 										</textarea>
-								</div>
+								<x-auth.input-error :messages="$errors->get('bio')" class="mt-2" />
+						</div>
 
-								<div class="flex items-center justify-between gap-2">
-										<button type="submit" class="btn-primary btn h-5 w-full sm:w-max" name="update-btn">
-												update changes
-										</button>
-								</div>
-						</form>
-				</div>
-
+						<div class="flex items-center justify-between gap-2">
+								<button type="submit" class="btn-primary btn h-5 w-full sm:w-max" name="update-btn">
+										update changes
+								</button>
+						</div>
+				</form>
 		</section>
 
 		<section>

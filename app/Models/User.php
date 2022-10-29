@@ -26,16 +26,17 @@ class User extends Authenticatable
 		'slug',
 		'email',
 		'password',
+		'tel',
+		'date_of_birth',
+		'slug',
+		'skill',
+		'address',
+		'bio'
 	];
 
-	/**
-	 * The attributes that should be hidden for serialization.
-	 *
-	 * @var array<int, string>
-	 */
 	protected $hidden = [
 		'password',
-		'remember_token',
+		'remember_token'
 	];
 
 	protected $casts = [
@@ -83,11 +84,10 @@ class User extends Authenticatable
 		return null;
 	}
 
-	protected function dateOfBirth(): Attribute
+	public function userSkillName($array)
 	{
-		return Attribute::make(
-			get: fn ($value) => ($value != null) ? Carbon::create($value)->toFormattedDateString() : 'not defined'
-		);
+		foreach ($array as $value) {
+			return $value->name;
+		}
 	}
-
 }
