@@ -39,4 +39,16 @@ class CvController extends Controller
 
 		return back();
 	}
+
+	public function destroy(User $user)
+	{
+		$currentFileName = Cv::select('cv_path')->where('user_id', $user->id)->first();
+		$deleteCv = Cv::where('user_id', $user->id)->delete();
+
+		if(!$deleteCv) abort(404);
+		
+		Storage::disk('local')->delete('/' . $currentFileName->cv_path);
+
+		return back();
+	}
 }

@@ -36,6 +36,10 @@ Route::middleware(['auth'])->group(function () {
 		Route::POST('cv/update/{user:slug}', 'update')
 			->where('user', '[A-Za-z-]+')
 			->name('cv.update');
+			
+		Route::get('cv/{user:slug}/delete', 'destroy')
+			->where('user', '[A-Za-z-]+')
+			->name('cv.destroy');
 	});
 });
 

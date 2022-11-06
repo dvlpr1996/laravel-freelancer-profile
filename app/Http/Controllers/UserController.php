@@ -13,7 +13,9 @@ class UserController extends Controller
 	public function destroy(User $user)
 	{
 		User::findOrFail($user->id)->delete();
+
 		Auth::guard('web')->logout();
+		
 		return redirect()->route('home.index');
 	}
 

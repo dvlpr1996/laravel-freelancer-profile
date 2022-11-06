@@ -71,6 +71,40 @@
 		</section>
 
 		<section>
+			<div class="card w-full bg-base-300 shadow-xl">
+					<div class="card-body space-y-2">
+							<h3>upload your cv</h3>
+							<hr>
+							<div class="flex items-center gap-3 justify-start flex-col sm:flex-row">
+									<p>your cv file type must be .pdf or .docx</p>
+									<a href="{{ route('cv.destroy', $user->slug) }}">delete your CV</a>
+							</div>
+							<form action="{{ route('cv.update', $user->slug) }}" method="POST" enctype="multipart/form-data" id="profile-form">
+									@csrf
+
+									<div class="flex flex-col gap-2 sm:flex-row items-center sm:items-start">
+											<div class="form-control">
+												<input type="file" class="btn-primary btn h-4 w-full sm:w-max appearance-none" accept="application/pdf"
+												name="cv">
+													<label for="cv" class="inline-block cursor-pointer p-2 align-sub">
+														click here to add resume file
+													</label>
+													<x-auth.input-error :messages="$errors->get('cv')" class="mt-2" />
+											</div>
+
+											<div class="form-control">
+													<button type="submit" class="btn-primary btn h-4 w-full sm:w-max" name="update-btn">
+															update cv
+													</button>
+											</div>
+									</div>
+							</form>
+					</div>
+			</div>
+			</div>
+	</section>
+
+		<section>
 				<div class="card w-full bg-base-300 shadow-xl">
 						<div class="card-body space-y-3">
 								<h3>delete your account</h3>
@@ -82,40 +116,6 @@
 										Delete your account
 								</a>
 						</div>
-				</div>
-		</section>
-
-		<section>
-				<div class="card w-full bg-base-300 shadow-xl">
-						<div class="card-body space-y-2">
-								<h3>upload your cv</h3>
-								<hr>
-								<div class="flex items-center gap-3 justify-start flex-col sm:flex-row">
-										<p>your cv file type must be .pdf or .docx</p>
-										<a href="#">see your current cv</a>
-								</div>
-								<form action="{{ route('cv.update', $user->slug) }}" method="POST" enctype="multipart/form-data" id="profile-form">
-										@csrf
-
-										<div class="flex flex-col gap-2 sm:flex-row items-center sm:items-start">
-												<div class="form-control">
-													<input type="file" class="btn-primary btn h-4 w-full sm:w-max appearance-none" accept="application/pdf"
-													name="cv">
-														<label for="cv" class="inline-block cursor-pointer p-2 align-sub">
-															click here to add resume file
-														</label>
-														<x-auth.input-error :messages="$errors->get('cv')" class="mt-2" />
-												</div>
-
-												<div class="form-control">
-														<button type="submit" class="btn-primary btn h-4 w-full sm:w-max" name="update-btn">
-																update cv
-														</button>
-												</div>
-										</div>
-								</form>
-						</div>
-				</div>
 				</div>
 		</section>
 @endsection
