@@ -2,6 +2,7 @@
 
 use App\Models\WorkSample;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\CvController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\PanelController;
 use App\Http\Controllers\PortfolioController;
@@ -29,6 +30,12 @@ Route::middleware(['auth'])->group(function () {
 		Route::put('user/update/{user:slug}', 'update')
 			->where('user', '[A-Za-z-]+')
 			->name('user.update');
+	});
+
+	Route::controller(CvController::class)->group(function () {
+		Route::POST('cv/update/{user:slug}', 'update')
+			->where('user', '[A-Za-z-]+')
+			->name('cv.update');
 	});
 });
 

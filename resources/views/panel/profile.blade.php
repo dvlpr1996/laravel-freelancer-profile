@@ -27,8 +27,7 @@
 
 								<div class="form-control w-full">
 										<x-auth.label>age</x-auth.label>
-										<x-auth.input type="date" name="date_of_birth" place="date of birth"
-										 :value="$user->date_of_birth" />
+										<x-auth.input type="date" name="date_of_birth" place="date of birth" :value="$user->date_of_birth" />
 								</div>
 						</div>
 
@@ -88,28 +87,28 @@
 
 		<section>
 				<div class="card w-full bg-base-300 shadow-xl">
-						<div class="card-body space-y-3">
+						<div class="card-body space-y-2">
 								<h3>upload your cv</h3>
 								<hr>
-								<p class="text-center sm:text-left">
-										your cv file type must be .pdf
-								</p>
-								<form class="space-y-5" action="#" method="POST" enctype="multipart/form-data" id="profile-form">
-
-										@method('put')
+								<div class="flex items-center gap-3 justify-start flex-col sm:flex-row">
+										<p>your cv file type must be .pdf or .docx</p>
+										<a href="#">see your current cv</a>
+								</div>
+								<form action="{{ route('cv.update', $user->slug) }}" method="POST" enctype="multipart/form-data" id="profile-form">
 										@csrf
 
-										<div class="flex flex-col gap-2 sm:flex-row">
+										<div class="flex flex-col gap-2 sm:flex-row items-center sm:items-start">
 												<div class="form-control">
-														<input type="file" class="hidden" id="cv" accept="application/pdf, application/msword"
-																name="cv">
+													<input type="file" class="btn-primary btn h-4 w-full sm:w-max appearance-none" accept="application/pdf"
+													name="cv">
 														<label for="cv" class="inline-block cursor-pointer p-2 align-sub">
-																click here to add resume file
+															click here to add resume file
 														</label>
+														<x-auth.input-error :messages="$errors->get('cv')" class="mt-2" />
 												</div>
 
 												<div class="form-control">
-														<button type="submit" class="btn-primary btn h-5 w-full sm:w-max" name="update-btn">
+														<button type="submit" class="btn-primary btn h-4 w-full sm:w-max" name="update-btn">
 																update cv
 														</button>
 												</div>

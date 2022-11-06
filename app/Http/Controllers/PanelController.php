@@ -9,6 +9,6 @@ class PanelController extends Controller
 {
 	public function index(User $user)
 	{
-		return view('panel.profile',compact('user'));
+		return view('panel.profile', compact('user'));
 	}
 }

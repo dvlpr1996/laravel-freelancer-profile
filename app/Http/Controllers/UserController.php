@@ -30,7 +30,7 @@ class UserController extends Controller
 			'bio' => $request->bio
 		]);
 
-		User::find($user->id)->skills()->update([
+		User::findOrFail($user->id)->skills()->update([
 			'name' => $request->skill,
 		]);
 
