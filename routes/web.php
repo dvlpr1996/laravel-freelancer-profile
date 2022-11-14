@@ -5,7 +5,9 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\CvController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\PanelController;
+use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\PortfolioController;
+use App\Http\Controllers\WorkSampleController;
 
 Route::view('/', 'home')->name('home.index');
 
@@ -36,16 +38,27 @@ Route::middleware(['auth'])->group(function () {
 		Route::POST('cv/update/{user:slug}', 'update')
 			->where('user', '[A-Za-z-]+')
 			->name('cv.update');
-			
+
 		Route::get('cv/{user:slug}/delete', 'destroy')
 			->where('user', '[A-Za-z-]+')
 			->name('cv.destroy');
 	});
 });
 
+Route::controller(ProfileController::class)->group(function () {
+	Route::Get('/profile/{user:slug}', 'index')
+		->where('user', '[A-Za-z-]+')
+		->name('profile.index');
+});
+
+Route::controller(WorkSampleController::class)->group(function () {
+	Route::Get('/workSamples/{worksample:title}', 'index')
+		->where('user', '[A-Za-z-]+')
+		->name('ws.index');
+});
+
 
 Route::GET('/test', function () {
-
 });
 
 require __DIR__ . '/auth.php';

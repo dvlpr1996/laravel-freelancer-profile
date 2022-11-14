@@ -6,12 +6,12 @@
 				<header class="flex flex-col items-center gap-5 rounded-lg bg-base-300 p-10">
 						<div class="avatar">
 								<div class="mask mask-squircle h-36 w-36">
-										<img src="https://dummyimage.com/600x400/000/fff">
+										<img src="{{ $user->gravatar() }}">
 								</div>
 						</div>
 
 						<div class="space-y-4 text-center">
-								<h2> $userName->full_Name ?? 'not defined'</h2>
+								<h2> {{ $user->fullName() ?? 'not defined' }}</h2>
 								<p>freelancer</p>
 
 								<div class="flex items-center justify-center gap-5">
@@ -37,18 +37,15 @@
 								<h2>about me</h2>
 
 								<p class="max-w-xl">
-										Lorem ipsum dolor sit amet consectetur adipisicing elit. Recusandae rerum harum, voluptates libero maxime
-										nostrum earum soluta facere? Repellendus dicta hic laborum doloribus, tempora quaerat ad nemo itaque, eligendi
-										alias nihil, doloremque impedit rerum ea quo in beatae earum eos quibusdam quod sint? Dignissimos ducimus ipsa
-										molestiae voluptatibus vero rem!
+										{{ $user->bio ?? 'not defined' }}
 								</p>
 
-								{{-- @if (!is_null($userName->resume)) --}}
+								@if (!is_null($user->cv))
 								<a href="#" class="btn-primary btn md:w-60">
 										<i class="fa-solid fa-download mr-2"></i>
 										download resume
 								</a>
-								{{-- @endif --}}
+								@endif
 						</div>
 
 						<div class="space-y-3 text-center sm:text-left">
@@ -59,7 +56,7 @@
 												<i class="fa-solid fa-envelope mr-1"></i>
 												<span class="info-list-title">email</span>
 												<a href="mailto:example@example.com" class="inline-block truncate">
-														$userName->email ?? 'not defined'
+														{{ $user->email ?? 'not defined' }}
 												</a>
 										</li>
 
@@ -67,7 +64,7 @@
 												<i class="fa-solid fa-phone-flip mr-1"></i>
 												<span class="info-list-title">phone</span>
 												<a href="tel:123-456-7890" class="inline-block truncate">
-														$userName->phone ?? 'not defined'
+														{{ $user->tel ?? 'not defined' }}
 												</a>
 										</li>
 
@@ -75,7 +72,7 @@
 												<i class="fa-solid fa-location-dot mr-1"></i>
 												<span class="info-list-title">address</span>
 												<span class="inline-block truncate">
-														$userName->address ?? 'not defined'
+														{{ $user->address ?? 'not defined' }}
 												</span>
 										</li>
 
@@ -83,7 +80,7 @@
 												<i class="fa-solid fa-calendar mr-1"></i>
 												<span class="info-list-title">age</span>
 												<span class="inline-block">
-														$userName->date_of_birth ?? 'not defined'
+														{{ $user->date_of_birth ?? 'not defined' }}
 												</span>
 										</li>
 
@@ -91,7 +88,9 @@
 												<i class="fa-solid fa-globe mr-1"></i>
 												<span class="info-list-title">skills</span>
 												<span class="inline-block">
-														$userName->skills ?? 'not defined'
+													@foreach ($user->skills as $skill)
+													 {{ $skill->name }}
+											    @endforeach
 												</span>
 										</li>
 
@@ -101,58 +100,27 @@
 
 				<section>
 						<h2 class="text-center">my works</h2>
-						<section class="mt-14 grid grid-flow-row gap-5 sm:grid-cols-2 sm:gap-2 md:grid-cols-3 xl:grid-cols-4">
-								<div class="card card-compact bg-base-200 shadow-xl gap-2 max-w-sm mx-auto">
-										<figure class="px-4 pt-4">
-											<img src="https://dummyimage.com/600x400/000/fff" alt="" class="rounded-lg">
-										</figure>
-										<div class="card-body justify-center items-center text-center gap-3">
-												<h2 class="card-title">title</h2>
-												<p>If a dog chews shoes whose shoes does he choose?</p>
-												<button class="btn-primary btn min-h-[30px] h-[40px] w-full">
-													Buy Now
-												</button>
-										</div>
-								</div>
+						<section class="mt-14 grid grid-flow-row gap-5 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
 
-								<div class="card card-compact bg-base-200 shadow-xl gap-2 max-w-sm mx-auto">
-									<figure class="px-4 pt-4">
-										<img src="https://dummyimage.com/600x400/000/fff" alt="" class="rounded-lg">
-									</figure>
-									<div class="card-body justify-center items-center text-center gap-3">
-											<h2 class="card-title">title</h2>
-											<p>If a dog chews shoes whose shoes does he choose?</p>
-											<button class="btn-primary btn min-h-[30px] h-[40px] w-full">
-												Buy Now
-											</button>
-									</div>
-							</div>
-
-							<div class="card card-compact bg-base-200 shadow-xl gap-2 max-w-sm mx-auto">
-								<figure class="px-4 pt-4">
-									<img src="https://dummyimage.com/600x400/000/fff" alt="" class="rounded-lg">
-								</figure>
-								<div class="card-body justify-center items-center text-center gap-3">
-										<h2 class="card-title">title</h2>
-										<p>If a dog chews shoes whose shoes does he choose?</p>
-										<button class="btn-primary btn min-h-[30px] h-[40px] w-full">
-											Buy Now
-										</button>
+							@forelse($user->workSamples as $portfolio)
+							<div class="custom-card bg-base-300">
+									<img src="{{ $portfolio->ws_path }}" alt="{{ $portfolio->title }}" class="object-fill object-center h-56 shadow-lg rounded-xl">
+								<div class="space-y-5 text-center">
+										<h3 class="capitalize">
+											{{ $portfolio->title }}
+										</h3>
+										<a href="{{ route('ws.index', Str::slug($portfolio->title)) }}" class="custom-btn btn-primary">
+												see more details
+										</a>
 								</div>
 						</div>
 
-						<div class="card card-compact bg-base-200 shadow-xl gap-2 max-w-sm mx-auto">
-							<figure class="px-4 pt-4">
-								<img src="https://dummyimage.com/600x400/000/fff" alt="" class="rounded-lg">
-							</figure>
-							<div class="card-body justify-center items-center text-center gap-3">
-									<h2 class="card-title">title</h2>
-									<p>If a dog chews shoes whose shoes does he choose?</p>
-									<button class="btn-primary btn min-h-[30px] h-[40px] w-full">
-										Buy Now
-									</button>
+							@empty
+							<div class="text-center">
+									<p>no portfolio found</p>
 							</div>
-					</div>
+					   @endforelse
+
 						</section>
 				</section>
 		</div>

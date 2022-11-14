@@ -51,4 +51,12 @@ html {
 	.info-list-title {
 		@apply capitalize inline-block min-w-[100px] text-lg sm:min-w-[100px];
 	}
+
+	.custom-card{
+		@apply flex flex-col gap-2 p-4 border rounded-lg w-10/12 sm:w-[initial] mx-auto sm:mx-[initial] shadow-xl;
+	}
+
+	.custom-btn {
+		@apply block w-full py-2 text-center duration-500 ease-in-out rounded-lg;
+	}
 }

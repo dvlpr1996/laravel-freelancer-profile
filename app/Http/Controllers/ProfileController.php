@@ -5,10 +5,10 @@ namespace App\Http\Controllers;
 use App\Models\User;
 use Illuminate\Http\Request;
 
-class WorkSampleController extends Controller
+class ProfileController extends Controller
 {
 	public function index(User $user)
 	{
-		return view('portfolios',compact('user'));
+		return view('profile', compact('user'));
 	}
 }

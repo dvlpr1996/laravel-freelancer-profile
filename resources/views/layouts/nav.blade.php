@@ -1,4 +1,4 @@
-{{-- @auth --}}
+@auth
 <nav class="navbar justify-between rounded-lg bg-primary p-3 font-medium text-primary-content">
 		<div class="space-x-3">
 				@yield('menu', '')
@@ -17,7 +17,7 @@
 								class="border-1 absolute top-8 right-0 z-20 hidden min-w-[170px] space-y-3 rounded-lg border-slate-600 bg-base-100 p-2"
 								x-bind:class="{ 'hidden': !open }">
 
-								<a href="#" class="m-2 block text-left text-primary-content">
+								<a href="{{ route('profile.index', auth()->user()->slug) }}" class="m-2 block text-left text-primary-content">
 										<i class="fa-solid fa-user mr-1 align-middle"></i>
 										profile
 								</a>
@@ -44,4 +44,4 @@
 				<img src="{{ auth()->user()->gravatar() }}" alt="" class="h-11 w-11 rounded-full">
 		</div>
 </nav>
-{{-- @endauth --}}
+@endauth
