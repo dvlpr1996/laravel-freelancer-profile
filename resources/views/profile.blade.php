@@ -109,7 +109,7 @@
 										<h3 class="capitalize">
 											{{ $portfolio->title }}
 										</h3>
-										<a href="{{ route('ws.index', Str::slug($portfolio->title)) }}" class="custom-btn btn-primary">
+										<a href="{{ route('ws.index', $portfolio->id) }}" class="custom-btn btn-primary">
 												see more details
 										</a>
 								</div>

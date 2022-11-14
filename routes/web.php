@@ -52,8 +52,8 @@ Route::controller(ProfileController::class)->group(function () {
 });
 
 Route::controller(WorkSampleController::class)->group(function () {
-	Route::Get('/workSamples/{worksample:title}', 'index')
-		->where('user', '[A-Za-z-]+')
+	Route::Get('/workSamples/{workSample}', 'index')
+		->where('user', '[0-9A-Za-z-]+')
 		->name('ws.index');
 });
 

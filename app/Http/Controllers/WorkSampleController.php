@@ -2,13 +2,14 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\User;
+use App\Models\WorkSample;
 use Illuminate\Http\Request;
 
 class WorkSampleController extends Controller
 {
-	public function index(User $user)
+	public function index(WorkSample $workSample)
 	{
-		return view('portfolios',compact('user'));
+		$relatedWorkSample = WorkSample::where('user_id', $workSample->user_id)->get();
+		return view('portfolios', compact('workSample', 'relatedWorkSample'));
 	}
 }
