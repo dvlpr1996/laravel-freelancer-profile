@@ -74,12 +74,16 @@
 										</div>
 
 								@empty
-										<div class="text-center">
+								<div class="text-center col-span-12 bg-base-300 rounded-lg p-5">
 												<p>no portfolio found</p>
 										</div>
 								@endforelse
-
 						</section>
+
+						<div class="text-center">
+							{{ $relatedWorkSample->links('components.pagination') }}
+						</div>
+
 				</section>
 		</main>
 @endsection

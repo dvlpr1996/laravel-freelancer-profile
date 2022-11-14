@@ -41,10 +41,10 @@
 								</p>
 
 								@if (!is_null($user->cv))
-								<a href="#" class="btn-primary btn md:w-60">
-										<i class="fa-solid fa-download mr-2"></i>
-										download resume
-								</a>
+										<a href="#" class="btn-primary btn md:w-60">
+												<i class="fa-solid fa-download mr-2"></i>
+												download resume
+										</a>
 								@endif
 						</div>
 
@@ -88,9 +88,9 @@
 												<i class="fa-solid fa-globe mr-1"></i>
 												<span class="info-list-title">skills</span>
 												<span class="inline-block">
-													@foreach ($user->skills as $skill)
-													 {{ $skill->name }}
-											    @endforeach
+														@foreach ($user->skills as $skill)
+																{{ $skill->name }}
+														@endforeach
 												</span>
 										</li>
 
@@ -102,26 +102,70 @@
 						<h2 class="text-center">my works</h2>
 						<section class="mt-14 grid grid-flow-row gap-5 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
 
-							@forelse($user->workSamples as $portfolio)
-							<div class="custom-card bg-base-300">
-									<img src="{{ $portfolio->ws_path }}" alt="{{ $portfolio->title }}" class="object-fill object-center h-56 shadow-lg rounded-xl">
-								<div class="space-y-5 text-center">
-										<h3 class="capitalize">
-											{{ $portfolio->title }}
-										</h3>
-										<a href="{{ route('ws.index', $portfolio->id) }}" class="custom-btn btn-primary">
-												see more details
-										</a>
-								</div>
-						</div>
+								@forelse($userWorkSamples as $portfolio)
+										<div class="custom-card bg-base-300">
+												<img src="{{ $portfolio->ws_path }}" alt="{{ $portfolio->title }}"
+														class="h-56 rounded-xl object-fill object-center shadow-lg">
+												<div class="space-y-5 text-center">
+														<h3 class="capitalize">
+																{{ $portfolio->title }}
+														</h3>
+														<a href="{{ route('ws.index', $portfolio->id) }}" class="custom-btn btn-primary">
+																see more details
+														</a>
+												</div>
+										</div>
 
-							@empty
-							<div class="text-center">
-									<p>no portfolio found</p>
-							</div>
-					   @endforelse
-
+								@empty
+										<div class="col-span-12 rounded-lg bg-base-300 p-5 text-center">
+												<p>no portfolio found</p>
+										</div>
+								@endforelse
 						</section>
+						<div class="text-center">
+								{{ $userWorkSamples->links('components.pagination') }}
+						</div>
+				</section>
+
+				<section class="my-16">
+						<h2 class="text-center">get in touch</h2>
+						<div class="mx-auto mt-10 w-11/12 rounded-lg bg-base-300 p-5 sm:w-9/12 md:w-6/12">
+								<form class="space-y-3" method="POST" action="{{ route('contact.store', $user->slug) }}">
+										@csrf
+										<div class="flex flex-col items-center gap-5 sm:flex-row">
+												<div class="form-control w-full">
+														<x-auth.label>first name</x-auth.label>
+														<x-auth.input type="text" name="fname" place="firstName" :old="old('fname')" />
+												</div>
+
+												<div class="w-full">
+														<x-auth.label>last name</x-auth.label>
+														<x-auth.input type="text" name="lname" place="lastName" :old="old('lname')" />
+												</div>
+										</div>
+
+										<div class="form-control w-full">
+												<x-auth.label>phone numbers</x-auth.label>
+												<x-auth.input type="tel" name="tel" place="phone numbers" :old="old('tel')" />
+										</div>
+
+										<div class="form-control w-full">
+												<x-auth.label>email address</x-auth.label>
+												<x-auth.input type="email" name="email" place="email address" :old="old('email')" />
+										</div>
+
+										<div class="form-control w-full">
+												<x-auth.label>your message</x-auth.label>
+												<textarea class="input-bordered textarea w-full" cols="30" rows="5" name="msg"
+												  value="{{ old('msg') }}" onclick="this.value=''">
+												</textarea>
+												<x-auth.input-error :messages="$errors->get('msg')" class="mt-2" />
+										</div>
+
+										<button type="submit" class="btn w-full">send your message</button>
+
+								</form>
+						</div>
 				</section>
 		</div>
 @endsection

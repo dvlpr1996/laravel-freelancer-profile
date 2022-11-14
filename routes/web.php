@@ -6,6 +6,7 @@ use App\Http\Controllers\CvController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\PanelController;
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\ContactUsController;
 use App\Http\Controllers\PortfolioController;
 use App\Http\Controllers\WorkSampleController;
 
@@ -53,8 +54,14 @@ Route::controller(ProfileController::class)->group(function () {
 
 Route::controller(WorkSampleController::class)->group(function () {
 	Route::Get('/workSamples/{workSample}', 'index')
-		->where('user', '[0-9A-Za-z-]+')
+		->where('workSample', '[0-9A-Za-z-]+')
 		->name('ws.index');
+});
+
+Route::controller(ContactUsController::class)->group(function () {
+	Route::POST('/contact-to/{user:slug}', 'store')
+		->where('user', '[A-Za-z-]+')
+		->name('contact.store');
 });
 
 
