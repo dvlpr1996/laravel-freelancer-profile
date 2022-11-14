@@ -5,7 +5,7 @@
 		<main class="my-8 space-y-20">
 				<section class="mx-auto flex flex-col items-start gap-6 md:flex-row lg:w-10/12">
 						<div class="w-full lg:w-1/2">
-								<img src="{{ $workSample->ws_path }}" alt="{{ $workSample->title }}"
+								<img src="{{ $workSample->ws_path }}" alt="{{ $workSample->title }}" loading="lazy"
 										class="transform cursor-pointer rounded-lg border border-slate-100 object-fill object-center p-2 duration-100 ease-in hover:scale-[1.05] w-full h-80">
 						</div>
 
@@ -62,7 +62,7 @@
 								@forelse($relatedWorkSample as $portfolio)
 										<div class="custom-card bg-base-300">
 												<img src="{{ $portfolio->ws_path }}" alt="{{ $portfolio->title }}"
-														class="h-56 rounded-xl object-fill object-center shadow-lg">
+														class="h-56 rounded-xl object-fill object-center shadow-lg" loading="lazy">
 												<div class="space-y-5 text-center">
 														<h3 class="capitalize">
 																{{ $portfolio->title }}

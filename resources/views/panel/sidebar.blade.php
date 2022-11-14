@@ -12,7 +12,7 @@
 
 				<li class="aside-items">
 						<i class="fas fa-calendar-week mr-1"></i>
-						<a href="#">messages</a>
+						<a href="{{ route('panel.notification.index', auth()->user()->slug) }}">messages</a>
 				</li>
 		</ul>
 </aside>

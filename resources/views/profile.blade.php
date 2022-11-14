@@ -6,7 +6,7 @@
 				<header class="flex flex-col items-center gap-5 rounded-lg bg-base-300 p-10">
 						<div class="avatar">
 								<div class="mask mask-squircle h-36 w-36">
-										<img src="{{ $user->gravatar() }}">
+										<img src="{{ $user->gravatar() }}" loading="lazy">
 								</div>
 						</div>
 
@@ -105,7 +105,7 @@
 								@forelse($userWorkSamples as $portfolio)
 										<div class="custom-card bg-base-300">
 												<img src="{{ $portfolio->ws_path }}" alt="{{ $portfolio->title }}"
-														class="h-56 rounded-xl object-fill object-center shadow-lg">
+														class="h-56 rounded-xl object-fill object-center shadow-lg" loading="lazy">
 												<div class="space-y-5 text-center">
 														<h3 class="capitalize">
 																{{ $portfolio->title }}

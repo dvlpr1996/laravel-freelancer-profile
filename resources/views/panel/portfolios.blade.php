@@ -106,7 +106,7 @@
 						<div class="w-full rounded-lg bg-base-300 p-4 shadow-xl">
 								<div class="flex flex-col items-center justify-center gap-5 sm:flex-row">
 										<figure>
-												<img src="{{ $portfolio->pic() }}" alt="{{ $portfolio->title }}" class="rounded-lg">
+												<img src="{{ $portfolio->pic() }}" alt="{{ $portfolio->title }}" class="rounded-lg" loading="lazy">
 										</figure>
 										<div class="space-y-3">
 												<h2>{{ $portfolio->title }}</h2>

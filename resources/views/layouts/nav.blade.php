@@ -41,7 +41,7 @@
 
 						</div>
 				</div>
-				<img src="{{ auth()->user()->gravatar() }}" alt="" class="h-11 w-11 rounded-full">
+				<img src="{{ auth()->user()->gravatar() }}" alt="" class="h-11 w-11 rounded-full" loading="lazy">
 		</div>
 </nav>
 @endauth

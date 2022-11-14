@@ -5,7 +5,7 @@
 
 		<nav class="navbar justify-between rounded-lg bg-primary text-primary-content">
 				<div class="flex items-center gap-2">
-						<img src="{{ asset('img/logo.png') }}" alt="logo" class="logo">
+						<img src="{{ asset('img/logo.png') }}" alt="logo" class="logo" loading="lazy">
 						<span class="hidden text-lg font-bold sm:block">Laravel Freelancer Profile</span>
 				</div>
 
@@ -56,13 +56,13 @@
 				<section class="space-y-8 text-center">
 						<h2>language and tools</h2>
 						<div class="flex flex-wrap items-center justify-center gap-3">
-								<img src="php.jpg" class="tools-img" alt="..." title="php">
-								<img src="laravel.jpg" class="tools-img" alt="..." title="laravel">
-								<img src="alpine.jpg" class="tools-img" alt="..." title="alpine">
-								<img src="tailwind.png" class="tools-img" alt="..." title="tailwind">
-								<img src="js.png" class="tools-img" alt="..." title="js">
-								<img src="css.jpg" class="tools-img" alt="..." title="css">
-								<img src="html.jpg" class="tools-img" alt="..." title="html5">
+								<img src="php.jpg" class="tools-img" alt="..." title="php" loading="lazy">
+								<img src="laravel.jpg" class="tools-img" alt="..." title="laravel" loading="lazy">
+								<img src="alpine.jpg" class="tools-img" alt="..." title="alpine" loading="lazy">
+								<img src="tailwind.png" class="tools-img" alt="..." title="tailwind" loading="lazy">
+								<img src="js.png" class="tools-img" alt="..." title="js" loading="lazy">
+								<img src="css.jpg" class="tools-img" alt="..." title="css" loading="lazy">
+								<img src="html.jpg" class="tools-img" alt="..." title="html5" loading="lazy">
 						</div>
 				</section>
 		</main>

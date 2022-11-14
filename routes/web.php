@@ -1,6 +1,5 @@
 <?php
 
-use App\Models\WorkSample;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\CvController;
 use App\Http\Controllers\UserController;
@@ -9,6 +8,7 @@ use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\ContactUsController;
 use App\Http\Controllers\PortfolioController;
 use App\Http\Controllers\WorkSampleController;
+use App\Http\Controllers\NotificationController;
 
 Route::view('/', 'home')->name('home.index');
 
@@ -17,6 +17,16 @@ Route::middleware(['auth'])->group(function () {
 		Route::Get('/panel-profile/{user:slug}', 'index')
 			->where('user', '[A-Za-z-]+')
 			->name('panel.profile.index');
+	});
+
+	Route::controller(NotificationController::class)->group(function () {
+		Route::Get('/panel-message/{user:slug}', 'index')
+			->where('user', '[A-Za-z-]+')
+			->name('panel.notification.index');
+
+		Route::Get('/panel-message/{contact}/delete', 'destroy')
+			->where('contact', '[0-9]+')
+			->name('panel.notification.destroy');
 	});
 
 	Route::controller(PortfolioController::class)->group(function () {
