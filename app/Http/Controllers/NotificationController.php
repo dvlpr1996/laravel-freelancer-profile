@@ -16,6 +16,6 @@ class NotificationController extends Controller
 	public function destroy(Contact $contact)
 	{
 		Contact::findOrFail($contact->id)->delete();
-		return back();
+		return back()->withToastSuccess(__('app.notificationDeleted'));
 	}
 }

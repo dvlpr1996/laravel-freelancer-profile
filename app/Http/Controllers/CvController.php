@@ -37,7 +37,7 @@ class CvController extends Controller
 			return back();
 		}
 
-		return back();
+		return back()->withToastSuccess(__('app.cvUploaded'));
 	}
 
 	public function destroy(User $user)
@@ -46,9 +46,9 @@ class CvController extends Controller
 		$deleteCv = Cv::where('user_id', $user->id)->delete();
 
 		if(!$deleteCv) abort(404);
-		
+
 		Storage::disk('local')->delete('/' . $currentFileName->cv_path);
 
-		return back();
+		return back()->withToastSuccess(__('app.cvDeleted'));
 	}
 }

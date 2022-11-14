@@ -35,6 +35,7 @@ class RegisteredUserController extends Controller
 
 		Auth::login($user);
 
-		return redirect(RouteServiceProvider::HOME . auth()->user()->slug);
+		return redirect(RouteServiceProvider::HOME . auth()->user()->slug)
+		->withToastSuccess(__('app.welcome'));
 	}
 }

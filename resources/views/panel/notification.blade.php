@@ -38,12 +38,12 @@
 				@forelse($userNotifications as $userNotification)
 						<div class="card w-full bg-base-300 shadow-xl">
 								<div class="card-body">
-										<div class="flex items-center gap-5">
+										<div class="flex items-center gap-5 sm:flex-row flex-col">
 												<h2 class="card-title">
 														message from :
 														{{ $userNotification->fullName() }}
 												</h2>
-												<div class="badge-primary badge badge-lg">
+												<div class="badge-primary badge badge-lg py-3">
 														{{ $userNotification->created_at }}
 												</div>
 										</div>

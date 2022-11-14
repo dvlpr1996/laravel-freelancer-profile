@@ -15,8 +15,8 @@ class UserController extends Controller
 		User::findOrFail($user->id)->delete();
 
 		Auth::guard('web')->logout();
-		
-		return redirect()->route('home.index');
+
+		return redirect()->route('home.index')->withToastSuccess(__('app.deleteAccount'));
 	}
 
 	public function update(UserRequest $request, User $user)
@@ -36,6 +36,6 @@ class UserController extends Controller
 			'name' => $request->skill,
 		]);
 
-		return back();
+		return back()->withToastSuccess(__('app.updateAccount'));;
 	}
 }

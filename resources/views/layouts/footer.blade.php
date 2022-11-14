@@ -20,6 +20,7 @@
 		Laravel Freelancer Profile. All rights reserved
 	</p>
 </footer>
+@include('sweetalert::alert')
 </body>
 
 </html>

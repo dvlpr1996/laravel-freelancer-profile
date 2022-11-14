@@ -21,6 +21,6 @@ class ContactUsController extends Controller
 
 		if(!$user) abort(404);
 
-		return back();
+		return back()->withToastSuccess(__('app.message'));
 	}
 }

@@ -27,6 +27,6 @@ class AuthenticatedSessionController extends Controller
 
 		$request->session()->regenerateToken();
 
-		return redirect()->route('home.index');
+		return redirect()->route('home.index')->withToastSuccess(__('app.logout'));
 	}
 }
