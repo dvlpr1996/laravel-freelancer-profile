@@ -2,7 +2,7 @@
 @section('title', 'profile')
 
 @section('content')
-		<h1 class="text-center sm:text-left">your profile info</h1>
+		<h1 class="text-center sm:text-left">your account info</h1>
 		<section class="mt-20 rounded-lg bg-base-300 p-4">
 				<form class="space-y-5" action="{{ route('user.update', $user->slug) }}" method="POST">
 						@method('put')

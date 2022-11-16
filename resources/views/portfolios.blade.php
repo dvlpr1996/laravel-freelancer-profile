@@ -5,8 +5,10 @@
 		<main class="my-8 space-y-20">
 				<section class="mx-auto flex flex-col items-start gap-6 md:flex-row lg:w-10/12">
 						<div class="w-full lg:w-1/2">
-								<img src="{{ $workSample->ws_path }}" alt="{{ $workSample->title }}" loading="lazy"
-										class="transform cursor-pointer rounded-lg border border-slate-100 object-fill object-center p-2 duration-100 ease-in hover:scale-[1.05] w-full h-80">
+								<a href="{{ $workSample->ws_path }}" target="_balank" rel="noreferrer">
+									<img src="{{ $workSample->ws_path }}" alt="{{ $workSample->title }}" loading="lazy"
+										class="h-80 w-full transform cursor-pointer rounded-lg border border-slate-100 object-fill object-center p-2 duration-100 ease-in hover:scale-[1.05]">
+								</a>
 						</div>
 
 						<div class="w-full lg:w-1/2">
@@ -17,17 +19,18 @@
 										</li>
 										<li class="text-xl capitalize">
 												<span class="font-bold">author</span> :
-												<span class="font-light">{{ $workSample->user->fullName() }}</span>
+												<a href="{{ route('profile.index', $workSample->user->slug) }}"
+														class="font-light text-info">{{ $workSample->user->fullName() }}</a>
 										</li>
 										<li class="text-xl capitalize">
 												<span class="font-bold">skills</span> :
 												<span>
 														@forelse ($workSample->skills as $skill)
-														<div class="badge-primary badge h-7 font-light">
-															{{ $skill->name }}
-													</div>
+																<div class="badge-primary badge h-7 font-light">
+																		{{ $skill->name }}
+																</div>
 														@empty
-															not defined
+																not defined
 														@endforelse ()
 												</span>
 										</li>
@@ -74,14 +77,14 @@
 										</div>
 
 								@empty
-								<div class="text-center col-span-12 bg-base-300 rounded-lg p-5">
+										<div class="col-span-12 rounded-lg bg-base-300 p-5 text-center">
 												<p>no portfolio found</p>
 										</div>
 								@endforelse
 						</section>
 
 						<div class="text-center">
-							{{ $relatedWorkSample->links('components.pagination') }}
+								{{ $relatedWorkSample->links('components.pagination') }}
 						</div>
 
 				</section>

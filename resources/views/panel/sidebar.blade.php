@@ -2,7 +2,7 @@
 		<ul class="mt-1 space-y-5">
 				<li class="aside-items">
 						<i class="fas fa-tachometer-alt mr-1"></i>
-						<a href="{{ route('panel.profile.index', auth()->user()->slug) }}">profile</a>
+						<a href="{{ route('panel.profile.index', auth()->user()->slug) }}">account info</a>
 				</li>
 
 				<li class="aside-items">

@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\CvController;
+use App\Http\Controllers\HomeController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\PanelController;
 use App\Http\Controllers\ProfileController;
@@ -10,7 +11,8 @@ use App\Http\Controllers\PortfolioController;
 use App\Http\Controllers\WorkSampleController;
 use App\Http\Controllers\NotificationController;
 
-Route::view('/', 'home')->name('home.index');
+Route::get('/', [HomeController::class, 'index'])->name('home.index');
+
 
 Route::middleware(['auth', 'verified'])->group(function () {
 	Route::controller(PanelController::class)->group(function () {

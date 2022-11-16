@@ -1,7 +1,7 @@
 @section('title', 'Home')
 @include('layouts.header')
 
-<body class="debug-screens mx-auto max-w-7xl px-4">
+<body class="mx-auto max-w-7xl px-4">
 
 		<nav class="navbar justify-between rounded-lg bg-primary text-primary-content">
 				<div class="flex items-center gap-2">
@@ -56,13 +56,34 @@
 				<section class="space-y-8 text-center">
 						<h2>language and tools</h2>
 						<div class="flex flex-wrap items-center justify-center gap-3">
-								<img src="php.jpg" class="tools-img" alt="..." title="php" loading="lazy">
-								<img src="laravel.jpg" class="tools-img" alt="..." title="laravel" loading="lazy">
-								<img src="alpine.jpg" class="tools-img" alt="..." title="alpine" loading="lazy">
-								<img src="tailwind.png" class="tools-img" alt="..." title="tailwind" loading="lazy">
-								<img src="js.png" class="tools-img" alt="..." title="js" loading="lazy">
-								<img src="css.jpg" class="tools-img" alt="..." title="css" loading="lazy">
-								<img src="html.jpg" class="tools-img" alt="..." title="html5" loading="lazy">
+								<img src="php.jpg" alt="php" title="php" loading="lazy">
+								<img src="laravel.jpg" alt="laravel" title="laravel" loading="lazy">
+								<img src="alpine.jpg" alt="alpine" title="alpine" loading="lazy">
+								<img src="tailwind.png" alt="tailwind" title="tailwind" loading="lazy">
+								<img src="js.png" alt="js" title="js" loading="lazy">
+								<img src="css.jpg" alt="css" title="css" loading="lazy">
+								<img src="html.jpg" alt="html" title="html5" loading="lazy">
+						</div>
+				</section>
+
+				<section class="space-y-8 text-center">
+						<h2>Our Freelancers</h2>
+						<div class="flex flex-wrap items-center justify-center gap-5">
+								@forelse ($users as $user)
+										<figure>
+												<img src="{{ $user->gravatar() }}" alt="{{ $user->slug }}" class="mx-auto block rounded-full"
+														title="php" loading="lazy">
+												<figcaption class="mt-3 text-lg capitalize">
+														<a href="{{ route('profile.index', $user->slug) }}">
+																{{ str_replace('-', ' ', $user->slug) }}
+														</a>
+												</figcaption>
+										</figure>
+								@empty
+										<p class="text-center text-lg text-primary">
+												there is no freelancer sign up yet
+										</p>
+								@endforelse
 						</div>
 				</section>
 		</main>

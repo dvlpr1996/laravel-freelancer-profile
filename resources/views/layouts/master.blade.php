@@ -1,6 +1,6 @@
 @include('layouts.header')
 
-<body class="debug-screens mx-auto max-w-7xl px-4">
+<body class="mx-auto max-w-7xl px-4">
 
 @include('layouts.nav')
 @yield('content')

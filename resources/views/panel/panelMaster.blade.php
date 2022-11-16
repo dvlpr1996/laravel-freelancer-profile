@@ -1,6 +1,6 @@
 @include('layouts.header')
 
-<body class="debug-screens max-w-full px-0">
+<body class="max-w-full px-0">
 
 		@section('menu')
 				<i id="sidebarToggle" class="fas fa-bars cursor-pointer text-2xl font-semibold"></i>
