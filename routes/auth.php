@@ -1,8 +1,9 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\Auth\VerifyEmailController;
 use App\Http\Controllers\Auth\NewPasswordController;
+use App\Http\Controllers\Auth\VerifyEmailController;
+use App\Http\Controllers\Auth\ChangePasswordController;
 use App\Http\Controllers\Auth\RegisteredUserController;
 use App\Http\Controllers\Auth\PasswordResetLinkController;
 use App\Http\Controllers\Auth\ConfirmablePasswordController;
@@ -50,4 +51,6 @@ Route::middleware('auth')->group(function () {
 
 	Route::get('logout', [AuthenticatedSessionController::class, 'destroy'])
 		->name('logout');
+
+	Route::PUT('user/{user}/update-password', [ChangePasswordController::class, 'updatePassword'])->name('update.password');
 });

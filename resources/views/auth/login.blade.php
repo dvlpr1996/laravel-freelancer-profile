@@ -12,7 +12,7 @@
 								</p>
 						</div>
 
-						<div class="card w-full max-w-sm flex-shrink-0 bg-base-100 shadow-2xl">
+						<div class="card w-full max-w-sm flex-shrink-0 bg-base-200 shadow-2xl">
 								<form action="{{ route('login.store') }}" method="POST">
 										@csrf
 										<div class="card-body">

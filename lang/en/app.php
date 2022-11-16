@@ -10,4 +10,7 @@ return [
 	'cvDeleted' => 'your cv file Successfully deleted',
 	'notificationDeleted' => 'message Successfully deleted',
 	'emailVerified' => 'Your email Successfully verified',
+	'passwordChanged' => 'Your password Successfully changed',
+	'passwordNotMatch' => 'Old Password Doesn\'t match!',
+	'samePassword' => 'Old Password and new Password are same',
 ];

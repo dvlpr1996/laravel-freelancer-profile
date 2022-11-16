@@ -28,10 +28,47 @@
 												dashboard
 										</a>
 
-										<a href="#" class="m-2 block text-left text-primary-content">
-												<i class="fa-solid fa-key mr-1 align-middle"></i>
-												password
-										</a>
+										<div>
+												<label for="my-modal-4" class="cursor-pointer">
+														<i class="fa-solid fa-key mr-1 align-middle"></i>
+														change password
+												</label>
+
+												<input type="checkbox" id="my-modal-4" class="modal-toggle">
+
+												<label for="my-modal-4" class="modal cursor-pointer">
+														<label class="modal-box relative">
+																<h3 class="text-lg font-bold">
+																		change your password
+																</h3>
+
+																<form action="{{ route('update.password', auth()->user()->id) }}" method="POST">
+																		@csrf
+																		@method('put')
+																		<div class="form-control w-full">
+																				<x-auth.label>current password</x-auth.label>
+																				<x-auth.input type="password" name="oldPassword" place="current password" />
+																		</div>
+
+																		<div class="form-control w-full">
+																				<x-auth.label>new password</x-auth.label>
+																				<x-auth.input type="password" name="newPassword" place="password" />
+																		</div>
+
+																		<div class="form-control w-full">
+																				<x-auth.label>confirm password</x-auth.label>
+																				<x-auth.input type="password" name="newPassword_confirmation" place="confirm password" />
+																		</div>
+
+																		<div class="form-control mt-5 w-full">
+																				<button type="submit" class="btn-primary btn w-full">
+																						change password
+																				</button>
+																		</div>
+																</form>
+														</label>
+												</label>
+										</div>
 
 										<hr>
 
