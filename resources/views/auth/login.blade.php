@@ -2,7 +2,6 @@
 @section('title', 'login')
 
 @section('content')
-		{{-- <x-auth-session-status class="mb-4" :status="session('status')"> --}}
 		<div class="mx-auto flex min-h-screen max-w-5xl items-center justify-center">
 				<div class="hero-content flex-col lg:flex-row-reverse lg:gap-8">
 

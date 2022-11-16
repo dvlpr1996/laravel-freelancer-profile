@@ -1,6 +1,6 @@
 @extends('layouts.authMaster')
 @section('body-class', 'py-4 sm:py-0')
-@section('title', 'register')
+@section('title', 'confirm password')
 
 @section('content')
 		<div class="mx-auto flex min-h-screen max-w-5xl items-center justify-center">

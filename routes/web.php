@@ -12,7 +12,7 @@ use App\Http\Controllers\NotificationController;
 
 Route::view('/', 'home')->name('home.index');
 
-Route::middleware(['auth'])->group(function () {
+Route::middleware(['auth', 'verified'])->group(function () {
 	Route::controller(PanelController::class)->group(function () {
 		Route::Get('/panel-profile/{user:slug}', 'index')
 			->where('user', '[A-Za-z-]+')

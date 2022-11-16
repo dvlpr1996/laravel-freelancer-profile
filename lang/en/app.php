@@ -9,4 +9,5 @@ return [
 	'cvUploaded' => 'your cv file Successfully uploaded',
 	'cvDeleted' => 'your cv file Successfully deleted',
 	'notificationDeleted' => 'message Successfully deleted',
+	'emailVerified' => 'Your email Successfully verified',
 ];
