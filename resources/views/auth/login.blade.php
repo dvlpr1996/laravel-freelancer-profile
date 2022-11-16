@@ -38,7 +38,7 @@
 												</div>
 
 												<div class="mt-3 flex items-center justify-between">
-														<a href="#" class="link-hover label-text-alt link">
+														<a href="{{ route('password.request') }}" class="link-hover label-text-alt link">
 																Forgot password?
 														</a>
 														<a href="{{ route('register.create') }}" class="link-hover label-text-alt link">
