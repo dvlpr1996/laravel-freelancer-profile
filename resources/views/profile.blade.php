@@ -40,8 +40,8 @@
 										{{ $user->bio ?? 'not defined' }}
 								</p>
 
-								@if (!is_null($user->cv))
-										<a href="#" class="btn-primary btn md:w-60">
+								@if (!empty($user->cv))
+										<a href="{{ route('cv.download', $user->slug) }}" class="btn-primary btn md:w-60">
 												<i class="fa-solid fa-download mr-2"></i>
 												download resume
 										</a>

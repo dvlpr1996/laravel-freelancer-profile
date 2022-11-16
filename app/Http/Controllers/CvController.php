@@ -45,10 +45,18 @@ class CvController extends Controller
 		$currentFileName = Cv::select('cv_path')->where('user_id', $user->id)->first();
 		$deleteCv = Cv::where('user_id', $user->id)->delete();
 
-		if(!$deleteCv) abort(404);
+		if (!$deleteCv) abort(404);
 
 		Storage::disk('local')->delete('/' . $currentFileName->cv_path);
 
 		return back()->withToastSuccess(__('app.cvDeleted'));
+	}
+
+	public function download(User $user)
+	{
+		$currentFileName = Cv::select('cv_path')->where('user_id', $user->id)->first();
+		if (!Storage::exists($currentFileName->cv_path))
+			abort(404);
+		return Storage::download($currentFileName->cv_path);
 	}
 }

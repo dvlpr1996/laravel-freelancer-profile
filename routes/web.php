@@ -53,6 +53,10 @@ Route::middleware(['auth'])->group(function () {
 		Route::get('cv/{user:slug}/delete', 'destroy')
 			->where('user', '[A-Za-z-]+')
 			->name('cv.destroy');
+
+		Route::get('cv/{user:slug}/download', 'download')
+			->where('user', '[A-Za-z-]+')
+			->name('cv.download');
 	});
 });
 
