@@ -38,6 +38,7 @@ Route::middleware(['auth'])->group(function () {
 	Route::controller(UserController::class)->group(function () {
 		Route::Get('user/{user:slug}/delete', 'destroy')
 			->where('user', '[A-Za-z-]+')
+			->middleware('password.confirm')
 			->name('delete.destroy');
 
 		Route::put('user/update/{user:slug}', 'update')
